@@ -12,6 +12,9 @@ import AddStudent from "./pages/AddStudent";
 import Courses from "./pages/Courses";
 import Payments from "./pages/Payments";
 
+// Deployed backend URL
+const API_URL = "https://student-portal-backend-chi.vercel.app";
+
 function Navbar() {
   const location = useLocation();
 
@@ -169,8 +172,7 @@ function AppContent({
 }) {
   const location = useLocation();
 
-  const showDashboard =
-    location.pathname === "/";
+  const showDashboard = location.pathname === "/";
 
   return (
     <>
@@ -227,9 +229,16 @@ function AppContent({
 function App() {
   const [students, setStudents] = useState([]);
 
+  // GET students from deployed backend
   useEffect(() => {
-    fetch("http://localhost:5000/api/students")
-      .then((response) => response.json())
+    fetch(`${API_URL}/api/students`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch students");
+        }
+
+        return response.json();
+      })
       .then((data) => {
         setStudents(data);
       })
@@ -242,10 +251,11 @@ function App() {
     setStudents((prev) => [...prev, student]);
   };
 
+  // DELETE student
   const deleteStudent = async (id) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/students/${id}`,
+        `${API_URL}/api/students/${id}`,
         {
           method: "DELETE",
         }
@@ -269,10 +279,11 @@ function App() {
     }
   };
 
+  // EDIT student
   const editStudent = async (id, name, course) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/students/${id}`,
+        `${API_URL}/api/students/${id}`,
         {
           method: "PUT",
           headers: {
