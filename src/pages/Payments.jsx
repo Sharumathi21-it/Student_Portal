@@ -1,20 +1,29 @@
 import { useEffect, useState } from "react";
 
+const API_URL = "https://student-portal-backend-chi.vercel.app";
+
 function Payments() {
   const [students, setStudents] = useState([]);
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [amount, setAmount] = useState("");
   const [loading, setLoading] = useState(true);
 
+  // Get students from deployed backend
   useEffect(() => {
-    fetch("http://localhost:5000/api/students")
-      .then((response) => response.json())
+    fetch(`${API_URL}/api/students`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch students");
+        }
+
+        return response.json();
+      })
       .then((data) => {
         setStudents(data);
         setLoading(false);
       })
       .catch((error) => {
-        console.error(error);
+        console.error("Error fetching students:", error);
         setLoading(false);
       });
   }, []);
@@ -39,7 +48,7 @@ function Payments() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/students/${selectedStudent.id}`,
+        `${API_URL}/api/students/${selectedStudent.id}`,
         {
           method: "PUT",
           headers: {
@@ -57,7 +66,9 @@ function Payments() {
       const updatedStudent = await response.json();
 
       if (!response.ok) {
-        alert(updatedStudent.message || "Payment failed.");
+        alert(
+          updatedStudent.message || "Payment failed."
+        );
         return;
       }
 
@@ -72,7 +83,7 @@ function Payments() {
       alert("Payment successful! 💳");
       closePayment();
     } catch (error) {
-      console.error(error);
+      console.error("Error processing payment:", error);
       alert("Unable to connect to the server.");
     }
   };
@@ -182,7 +193,9 @@ function Payments() {
                   </span>
 
                   <button
-                    onClick={() => openPayment(student)}
+                    onClick={() =>
+                      openPayment(student)
+                    }
                     className="rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 px-4 py-2 text-sm font-semibold text-white hover:from-indigo-700 hover:to-purple-700"
                   >
                     {paid ? "Pay Again" : "Pay Now"}
