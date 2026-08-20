@@ -1,12 +1,17 @@
 {
-  "name": "backend",
+  "name": "student-management-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Backend API for Student Management System",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
-  "keywords": [],
+  "keywords": [
+    "student",
+    "management",
+    "express",
+    "api"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
