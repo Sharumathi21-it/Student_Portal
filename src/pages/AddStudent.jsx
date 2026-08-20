@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const API_URL = "https://student-portal-backend-chi.vercel.app";
+
 function AddStudent({ addStudent }) {
   const [name, setName] = useState("");
   const [course, setCourse] = useState("");
@@ -35,7 +37,7 @@ function AddStudent({ addStudent }) {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/students",
+        `${API_URL}/api/students`,
         {
           method: "POST",
           headers: {
@@ -65,7 +67,7 @@ function AddStudent({ addStudent }) {
 
       alert("Student added successfully!");
     } catch (error) {
-      console.error(error);
+      console.error("Error adding student:", error);
       setError("Unable to connect to the server.");
     } finally {
       setLoading(false);
