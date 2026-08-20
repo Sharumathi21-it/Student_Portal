@@ -26,15 +26,17 @@ let students = [
 
 // Home route
 app.get("/", (req, res) => {
-  res.send("Student Management API is running");
+  res.json({
+    message: "Student Management API is running",
+  });
 });
 
-// GET all students
+// GET - Get all students
 app.get("/api/students", (req, res) => {
   res.json(students);
 });
 
-// POST - Add student
+// POST - Add a new student
 app.post("/api/students", (req, res) => {
   const {
     name,
@@ -43,6 +45,7 @@ app.post("/api/students", (req, res) => {
     paymentStatus = "Pending",
   } = req.body;
 
+  // Validation
   if (!name || !course) {
     return res.status(400).json({
       message: "Name and course are required",
@@ -62,7 +65,7 @@ app.post("/api/students", (req, res) => {
   res.status(201).json(newStudent);
 });
 
-// PUT - Edit student / Update payment
+// PUT - Update student
 app.put("/api/students/:id", (req, res) => {
   const id = Number(req.params.id);
 
@@ -83,17 +86,17 @@ app.put("/api/students/:id", (req, res) => {
     });
   }
 
-  // Update only the fields that are provided
+  // Update only provided fields
   if (name !== undefined) {
-    student.name = name;
+    student.name = name.trim();
   }
 
   if (course !== undefined) {
-    student.course = course;
+    student.course = course.trim();
   }
 
   if (amount !== undefined) {
-    student.amount = Number(amount);
+    student.amount = Number(amount) || 0;
   }
 
   if (paymentStatus !== undefined) {
@@ -126,11 +129,5 @@ app.delete("/api/students/:id", (req, res) => {
   });
 });
 
-// Start server
-const PORT = 5000;
-
-app.listen(PORT, () => {
-  console.log(
-    `Server running on http://localhost:${PORT}`
-  );
-});
+// Export app for Vercel
+module.exports = app;
