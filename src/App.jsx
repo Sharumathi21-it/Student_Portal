@@ -77,7 +77,7 @@ function DashboardHeader({ students }) {
       <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
 
         <div>
-          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-white/70">
+          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-white/90">
             Student Management
           </p>
 
@@ -85,7 +85,7 @@ function DashboardHeader({ students }) {
             Manage your students
           </h2>
 
-          <p className="mt-2 max-w-xl text-white/80">
+          <p className="mt-2 max-w-xl text-white/95">
             Manage students, courses and payments from one simple dashboard.
           </p>
         </div>
@@ -149,7 +149,7 @@ function Stats({ students }) {
               System Status
             </p>
 
-            <h3 className="mt-2 text-2xl font-bold text-green-600">
+            <h3 className="mt-2 text-2xl font-bold text-green-700">
               Active
             </h3>
           </div>
