@@ -114,7 +114,7 @@ function Payments() {
 
       {/* TOTAL */}
       <div className="mb-8 rounded-3xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 p-7 text-white shadow-lg">
-        <p className="text-sm text-white/70">
+        <p className="text-sm text-white/90">
           Total Amount Collected
         </p>
 
@@ -179,8 +179,8 @@ function Payments() {
                   <span
                     className={`rounded-full px-3 py-1 text-xs font-semibold ${
                       paid
-                        ? "bg-green-50 text-green-600"
-                        : "bg-yellow-50 text-yellow-600"
+                        ? "bg-green-50 text-green-700"
+                        : "bg-yellow-50 text-yellow-700"
                     }`}
                   >
                     {paid ? "Paid" : "Pending"}
