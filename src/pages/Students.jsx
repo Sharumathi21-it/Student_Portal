@@ -64,7 +64,13 @@ function Students({ students, deleteStudent, editStudent }) {
       {/* SEARCH */}
       <div className="mb-6">
 
+        <label htmlFor="student-search" className="sr-only">
+          Search students
+        </label>
+
         <input
+          id="student-search"
+          name="search"
           type="text"
           placeholder="🔍 Search student..."
           value={search}
@@ -200,6 +206,7 @@ function Students({ students, deleteStudent, editStudent }) {
 
               <button
                 onClick={closeEdit}
+                aria-label="Close edit student dialog"
                 className="rounded-lg px-3 py-2 text-gray-400 hover:bg-gray-100 hover:text-gray-700"
               >
                 ✕
@@ -212,11 +219,16 @@ function Students({ students, deleteStudent, editStudent }) {
 
               <div className="mb-5">
 
-                <label className="mb-2 block text-sm font-semibold text-gray-700">
+                <label
+                  htmlFor="edit-student-name"
+                  className="mb-2 block text-sm font-semibold text-gray-700"
+                >
                   Student Name
                 </label>
 
                 <input
+                  id="edit-student-name"
+                  name="editStudentName"
                   type="text"
                   value={editName}
                   onChange={(e) =>
@@ -230,11 +242,16 @@ function Students({ students, deleteStudent, editStudent }) {
 
               <div className="mb-7">
 
-                <label className="mb-2 block text-sm font-semibold text-gray-700">
+                <label
+                  htmlFor="edit-student-course"
+                  className="mb-2 block text-sm font-semibold text-gray-700"
+                >
                   Course
                 </label>
 
                 <input
+                  id="edit-student-course"
+                  name="editCourse"
                   type="text"
                   value={editCourse}
                   onChange={(e) =>
