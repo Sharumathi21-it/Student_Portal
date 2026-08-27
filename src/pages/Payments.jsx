@@ -242,7 +242,10 @@ function Payments() {
 
             <form onSubmit={handlePayment}>
 
-              <label className="mb-2 block text-sm font-semibold text-gray-700">
+              <label
+                htmlFor="payment-modal-amount"
+                className="mb-2 block text-sm font-semibold text-gray-700"
+              >
                 Payment Amount
               </label>
 
@@ -253,6 +256,8 @@ function Payments() {
                 </span>
 
                 <input
+                  id="payment-modal-amount"
+                  name="paymentAmount"
                   type="number"
                   min="1"
                   value={amount}
