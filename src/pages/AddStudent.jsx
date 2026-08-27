@@ -180,7 +180,7 @@ function AddStudent({ addStudent }) {
 
           <div className="flex items-center gap-3">
 
-            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-green-100 text-green-600">
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-green-100 text-green-700">
               ✓
             </div>
 
@@ -189,7 +189,7 @@ function AddStudent({ addStudent }) {
                 Payment Status
               </p>
 
-              <p className="text-sm text-green-600">
+              <p className="text-sm text-green-700">
                 Payment will be recorded as Paid
               </p>
             </div>
@@ -200,7 +200,7 @@ function AddStudent({ addStudent }) {
 
         {/* ERROR */}
         {error && (
-          <div className="mb-5 rounded-xl bg-red-50 p-4 text-sm font-medium text-red-600">
+          <div className="mb-5 rounded-xl bg-red-50 p-4 text-sm font-medium text-red-700">
             ⚠️ {error}
           </div>
         )}
