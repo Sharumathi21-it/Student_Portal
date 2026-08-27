@@ -103,11 +103,16 @@ function AddStudent({ addStudent }) {
         {/* NAME */}
         <div className="mb-5">
 
-          <label className="mb-2 block text-sm font-semibold text-gray-700">
+          <label
+            htmlFor="student-name"
+            className="mb-2 block text-sm font-semibold text-gray-700"
+          >
             Student Name
           </label>
 
           <input
+            id="student-name"
+            name="studentName"
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -120,11 +125,16 @@ function AddStudent({ addStudent }) {
         {/* COURSE */}
         <div className="mb-5">
 
-          <label className="mb-2 block text-sm font-semibold text-gray-700">
+          <label
+            htmlFor="student-course"
+            className="mb-2 block text-sm font-semibold text-gray-700"
+          >
             Course
           </label>
 
           <input
+            id="student-course"
+            name="course"
             type="text"
             value={course}
             onChange={(e) => setCourse(e.target.value)}
@@ -137,7 +147,10 @@ function AddStudent({ addStudent }) {
         {/* PAYMENT */}
         <div className="mb-5">
 
-          <label className="mb-2 block text-sm font-semibold text-gray-700">
+          <label
+            htmlFor="payment-amount"
+            className="mb-2 block text-sm font-semibold text-gray-700"
+          >
             Payment Amount
           </label>
 
@@ -148,6 +161,8 @@ function AddStudent({ addStudent }) {
             </span>
 
             <input
+              id="payment-amount"
+              name="amount"
               type="number"
               min="1"
               value={amount}
