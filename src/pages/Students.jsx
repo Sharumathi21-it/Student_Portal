@@ -166,7 +166,7 @@ function Students({ students, deleteStudent, editStudent }) {
                       deleteStudent(student.id);
                     }
                   }}
-                  className="rounded-lg bg-red-50 px-4 py-2 text-sm font-semibold text-red-600 transition hover:bg-red-500 hover:text-white"
+                  className="rounded-lg bg-red-50 px-4 py-2 text-sm font-semibold text-red-700 transition hover:bg-red-500 hover:text-white"
                 >
                   🗑️ Delete
                 </button>
@@ -207,7 +207,7 @@ function Students({ students, deleteStudent, editStudent }) {
               <button
                 onClick={closeEdit}
                 aria-label="Close edit student dialog"
-                className="rounded-lg px-3 py-2 text-gray-400 hover:bg-gray-100 hover:text-gray-700"
+                className="rounded-lg px-3 py-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900"
               >
                 ✕
               </button>
