@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useState, useEffect } from "react";
 import {
   BrowserRouter,
   Routes,
@@ -7,10 +7,10 @@ import {
   useLocation,
 } from "react-router-dom";
 
-const Students = lazy(() => import("./pages/Students"));
-const AddStudent = lazy(() => import("./pages/AddStudent"));
-const Courses = lazy(() => import("./pages/Courses"));
-const Payments = lazy(() => import("./pages/Payments"));
+import Students from "./pages/Students";
+import AddStudent from "./pages/AddStudent";
+import Courses from "./pages/Courses";
+import Payments from "./pages/Payments";
 
 // Deployed backend URL
 const API_URL = "https://student-portal-backend-chi.vercel.app";
@@ -185,49 +185,41 @@ function AppContent({
 
       <div className="rounded-3xl border border-gray-100 bg-white p-6 shadow-sm">
 
-        <Suspense
-          fallback={
-            <div className="py-16 text-center text-sm font-medium text-gray-500">
-              Loading…
-            </div>
-          }
-        >
-          <Routes>
+        <Routes>
 
-            <Route
-              path="/"
-              element={
-                <Students
-                  students={students}
-                  deleteStudent={deleteStudent}
-                  editStudent={editStudent}
-                />
-              }
-            />
+          <Route
+            path="/"
+            element={
+              <Students
+                students={students}
+                deleteStudent={deleteStudent}
+                editStudent={editStudent}
+              />
+            }
+          />
 
-            <Route
-              path="/add-student"
-              element={
-                <AddStudent addStudent={addStudent} />
-              }
-            />
+          <Route
+            path="/add-student"
+            element={
+              <AddStudent addStudent={addStudent} />
+            }
+          />
 
-            <Route
-              path="/courses"
-              element={
-                <Courses />
-              }
-            />
+          <Route
+            path="/courses"
+            element={
+              <Courses />
+            }
+          />
 
-            <Route
-              path="/payments"
-              element={
-                <Payments />
-              }
-            />
+          <Route
+            path="/payments"
+            element={
+              <Payments />
+            }
+          />
 
-          </Routes>
-        </Suspense>
+        </Routes>
 
       </div>
     </>
